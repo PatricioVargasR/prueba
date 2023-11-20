@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="autor" content="@Rolando">
+        <meta charset="UTF-8">
+        <meta name="description" content="Editar forma de Pago">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="assets/css/mystyle.css" rel="stylesheet" >
+        <title>TIERRA TEJIDA</title>
+    </head>
+
+<body>
+
+    <header style="padding-bottom: 20px;">
+        <nav class="navbar-color"> 
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="assets/img/LOGO.png" class="web-loge">
+              </a>
+            </div>
+        </nav>
+    </header>
+    <main style="display:flexbox; flex-direction: row;">
+
+        <div class="navigation">
+            <div class="navigation-color">
+                <a href="index.php"> Principal</a>
+                <span>/ Mi Perfil </span>
+            </div>
+        </div>
+        <div class="container1">
+
+            <div class="box logo" style="padding-left: 30%;">
+                <img src="assets/img/tenango.jpeg" alt="Foto de perfil" class="profile-picture rounded-circle" onclick="abrirSelectorImagen()">
+            </div>
+
+
+            <div class="box user">
+
+                <h2>Datos Generales</h2>
+                <p>
+                    <span id="nombre">Nombre: Patricio </span>
+                    <a class="editable" onclick="editar('nombre')"> (Editar)</a>
+                </p>
+                <p>
+                    <span id="apellido-paterno">Apellido Paterno: Vargas</span>
+                    <a class="editable" onclick="editar('apellido-paterno')"> (Editar)</a>
+                </p>
+                <p>
+                    <span id="apellido-materno">Apellido Materno: Ramírez</span>
+                    <a class="editable" onclick="editar('apellido-materno')"> (Editar)</a>
+                </p>
+                <p>
+                    <span id="edad">Edad: 23</span>
+                    <a class="editable" onclick="editar('edad')"> (Editar)</a>
+                </p>
+                <p>
+                    <span id="ubicacion">Ubicación: Tulancingo, Hidalgo</span>
+                    <a class="editable" onclick="editar('ubicacion')"> (Editar)</a>
+                </p>
+                <h2>Formas de Pago</h2>
+                <p>
+                    <span id="forma-pago">Tarjeta de Crédito: **** **** **** 1234</span>
+                    <a class="editable" onclick="irAFormaPago()"> (Editar)</a>
+                </p>
+            
+                <div id="formulario-edicion" style="display: none;">
+                    <label for="numero-de-tarjeta">Nuevo valor:</label>
+                    <input type="text" id="numero-de-tarjeta">
+                    <button onclick="guardarEdicion()">Guardar</button>
+                </div>
+            
+                <input type="file" accept="image/*" id="input-imagen" onchange="cambiarImagen()" style="display: none;">
+            </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+<script>
+    let campoActual;
+
+function editar(campo) {
+    campoActual = campo;
+    const valorActual = document.getElementById(campo).innerText.split(': ')[1];
+    document.getElementById('numero-de-tarjeta').value = valorActual;
+    document.getElementById('formulario-edicion').style.display = 'block';
+}
+
+function guardarEdicion() {
+    const nuevoValor = document.getElementById('numero-de-tarjeta').value;
+    document.getElementById(campoActual).innerText = campoActual.charAt(0).toUpperCase() + campoActual.slice(1) + ': ' + nuevoValor;
+    document.getElementById('formulario-edicion').style.display = 'none';
+}
+
+function abrirSelectorImagen() {
+    document.getElementById('input-imagen').click();
+}
+
+function cambiarImagen() {
+    const inputImagen = document.getElementById('input-imagen');
+    const imagenPerfil = document.querySelector('.profile-picture');
+
+    const file = inputImagen.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            imagenPerfil.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function irAFormaPago() {
+    // Redirige a la página de edición de forma de pago
+    window.location.href = 'editar_forma_pago.html';
+}
+
+function irAIndex() {
+    // Redirige a la página de edición de forma de pago
+    window.location.href = 'index.php';
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Puedes cargar datos del usuario desde el backend aquí y actualizar el formulario si es necesario
+});
+
+document.getElementById("profileForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Puedes agregar lógica aquí para enviar el formulario al servidor
+    // y manejar la actualización de datos del usuario
+
+    alert("¡Cambios guardados!");
+});
+
+
+        // Cargar los datos almacenados al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarDatos);
+
+        function cargarDatos() {
+            const datosFormaPago = obtenerDatosFormaPago();
+            document.getElementById('nombre-propietario').value = datosFormaPago.nombrePropietario || '';
+            document.getElementById('numero-de-tarjeta').value = datosFormaPago.numeroTarjeta || '';
+            document.getElementById('fecha-caducidad').value = datosFormaPago.fechaCaducidad || '';
+            document.getElementById('cvv').value = datosFormaPago.cvv || '';
+        }
+
+        function guardarEdicion() {
+            // Recupera los valores del formulario
+            const nombrePropietario = document.getElementById('nombre-propietario').value;
+            const numeroTarjeta = document.getElementById('numero-de-tarjeta').value;
+            const fechaCaducidad = document.getElementById('fecha-caducidad').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Guarda los datos en el almacenamiento local
+            guardarDatosFormaPago({
+                nombrePropietario,
+                numeroTarjeta,
+                fechaCaducidad,
+                cvv,
+            });
+
+            // Redirige de nuevo a la página principal
+            window.location.href = 'index.html';
+        }
+
+        function obtenerDatosFormaPago() {
+            const datosGuardados = localStorage.getItem('datosFormaPago');
+            return datosGuardados ? JSON.parse(datosGuardados) : {};
+        }
+
+        function guardarDatosFormaPago(datos) {
+            localStorage.setItem('datosFormaPago', JSON.stringify(datos));
+        }
+
+</script>
+
+</html>
+
+

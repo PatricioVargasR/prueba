@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="autor" content="@Rolando">
+        <meta charset="UTF-8">
+        <meta name="description" content="Editar forma de Pago">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="./mystyle.css" rel="stylesheet" >
+        <title>TIERRA TEJIDA</title>
+    </head>
+
+    <body>
+        <header style="padding-bottom: 20px;">
+            <nav class="navbar-color"> 
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">
+                    <img src="assets/img/LOGO.png" class="web-loge" style="width: 200px">
+                  </a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="navigation">
+                <div class="navigation-color">
+                    <a href="index.php">Mi Perfil </a>
+                    <span>/ Editar Forma de Pago</span>
+                </div>
+            </div>
+
+            <div class="container">
+                <h2>Editar Forma de Pago</h2>
+        
+                <form id="forma-pago-form">
+                    <fieldset>
+                        <legend>Cambia la manera con la que realizas tus pagos</legend>
+                        
+                        <div class="mb-3">
+                          <label for="TextInput" class="form-label">Nombre del Propietario</label>
+                          <input type="text" class="form-control" id="nombre-propietario" name="nombre-propietario" required>
+                        </div>
+        
+                        <div class="mb-3">
+                          <label for="disabledSelect" class="form-label">Numero de Tarjeta</label>
+                          <input type="text" class="form-control" id="numero-de-tarjeta" name="numero-de-tarjeta" required>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="disabledSelect" class="form-label">Fecha de Caducidad</label>
+                            <input type="text" class="form-control" id="fecha-caducidad" name="fecha-caducidad" required>                
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="disabledSelect" class="form-label">Codigo CVV</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv" required>                
+                        </div>
+                    </fieldset>
+        
+        
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 20vh;">
+                        <div class="d-flex justify-content-between" style="width: 30%;">
+                            <button type="button" class="btn btn-danger" onclick="irAIndex()">Cancelar</button>
+                            <button type="submit" class="btn btn-success btn-lg" onclick="guardarEdicion()">Guardar cambios</button>
+                        </div>
+                    </div>
+                    
+
+                </form>
+            </div>
+        </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+    let campoActual;
+
+function editar(campo) {
+    campoActual = campo;
+    const valorActual = document.getElementById(campo).innerText.split(': ')[1];
+    document.getElementById('numero-de-tarjeta').value = valorActual;
+    document.getElementById('formulario-edicion').style.display = 'block';
+}
+
+function guardarEdicion() {
+    const nuevoValor = document.getElementById('numero-de-tarjeta').value;
+    document.getElementById(campoActual).innerText = campoActual.charAt(0).toUpperCase() + campoActual.slice(1) + ': ' + nuevoValor;
+    document.getElementById('formulario-edicion').style.display = 'none';
+}
+
+function abrirSelectorImagen() {
+    document.getElementById('input-imagen').click();
+}
+
+function cambiarImagen() {
+    const inputImagen = document.getElementById('input-imagen');
+    const imagenPerfil = document.querySelector('.profile-picture');
+
+    const file = inputImagen.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            imagenPerfil.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function irAFormaPago() {
+    // Redirige a la página de edición de forma de pago
+    window.location.href = 'editar_forma_pago.html';
+}
+
+function irAIndex() {
+    // Redirige a la página de edición de forma de pago
+    window.location.href = 'index.php';
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Puedes cargar datos del usuario desde el backend aquí y actualizar el formulario si es necesario
+});
+
+document.getElementById("profileForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Puedes agregar lógica aquí para enviar el formulario al servidor
+    // y manejar la actualización de datos del usuario
+
+    alert("¡Cambios guardados!");
+});
+
+
+        // Cargar los datos almacenados al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarDatos);
+
+        function cargarDatos() {
+            const datosFormaPago = obtenerDatosFormaPago();
+            document.getElementById('nombre-propietario').value = datosFormaPago.nombrePropietario || '';
+            document.getElementById('numero-de-tarjeta').value = datosFormaPago.numeroTarjeta || '';
+            document.getElementById('fecha-caducidad').value = datosFormaPago.fechaCaducidad || '';
+            document.getElementById('cvv').value = datosFormaPago.cvv || '';
+        }
+
+        function guardarEdicion() {
+            // Recupera los valores del formulario
+            const nombrePropietario = document.getElementById('nombre-propietario').value;
+            const numeroTarjeta = document.getElementById('numero-de-tarjeta').value;
+            const fechaCaducidad = document.getElementById('fecha-caducidad').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Guarda los datos en el almacenamiento local
+            guardarDatosFormaPago({
+                nombrePropietario,
+                numeroTarjeta,
+                fechaCaducidad,
+                cvv,
+            });
+
+            // Redirige de nuevo a la página principal
+            window.location.href = 'index.html';
+        }
+
+        function obtenerDatosFormaPago() {
+            const datosGuardados = localStorage.getItem('datosFormaPago');
+            return datosGuardados ? JSON.parse(datosGuardados) : {};
+        }
+
+        function guardarDatosFormaPago(datos) {
+            localStorage.setItem('datosFormaPago', JSON.stringify(datos));
+        }
+
+</script>
+
+    </script>
+    </body>
+</html>
+
