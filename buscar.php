@@ -10,17 +10,26 @@ include('includes/header.php');
         /**background-image: url("assets/img/65054.jpg"); **/
     }
 
+
     .carta {
-        max-width: 300px;
+        max-width: 7000px;
         margin: 0 auto;
         text-align: center;
+        margin-bottom: 60px; /* Ajusta el espacio entre las cartas */
     }
 
     .carta img {
         width: 100%;
         height: auto;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
+
+    .resultados-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
 </style>
 
 <section class="paginainicio" id="inicio">
@@ -32,7 +41,8 @@ include('includes/header.php');
                     <!-- Search form -->
                     <form action="<?= base_url('/buscar.php'); ?>" method="GET">
                         <div class="md-form mt-0">
-                            <input class="form-control" type="text" name="query" placeholder="Buscar" aria-label="Search">
+
+                            <input class="form-control" type="text" name="query" placeholder="Buscar " aria-label="Search">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Buscar</button>
@@ -44,40 +54,43 @@ include('includes/header.php');
 </section>
 
 <section class="portafolio">
-    <h3>Resultados de la búsqueda</h3>
+    <h3>Resultados de la búsqueda</h3><p></p><img src="assets/img/BUSCADOR.png" alt="Icono de contacto" style="width: 24px; height: 24px; margin-right: 8px"><br>
     <div class="underline"></div>
 
-    <?php
-    // Verificar si se ha enviado una consulta de búsqueda
-    if (isset($_GET['query'])) {
-        $search_query = $_GET['query'];
-        $searchPosts = "SELECT * FROM productos WHERE nombre_producto = '$search_query' AND stock != '0' ORDER BY id_productos DESC";
-        $searchPosts_run = mysqli_query($conn, $searchPosts);
 
-        if (mysqli_num_rows($searchPosts_run) > 0) {
-            foreach ($searchPosts_run as $postItem) {
-    ?>
-                <div class="carta">
-                    <?php if ($postItem['imagen'] != null) : ?>
-                        <img src="<?= base_url('uploads/posts/' . $postItem['imagen']); ?>" alt="<?= $postItem['nombre_producto']; ?>">
-                    <?php endif; ?>
-                    <h3><?= $postItem['nombre_producto']; ?></h3>
-                    <p><?= $postItem['descripcion']; ?></p>
-                    <a href="<?= base_url('productos/' . $postItem['slug']); ?>" class="btn btn-primary">Leer más</a>
-                </div>
-    <?php
+    <div class="resultados-container">
+    <ul class="cartas">
+        <?php
+        // Verificar si se ha enviado una consulta de búsqueda
+        if (isset($_GET['query'])) {
+            $search_query = $_GET['query'];
+            $searchPosts = "SELECT * FROM productos WHERE nombre_producto LIKE '%$search_query%' AND stock != '0' ORDER BY id_productos DESC";
+            $searchPosts_run = mysqli_query($conn, $searchPosts);
+
+            if (mysqli_num_rows($searchPosts_run) > 0) {
+                foreach ($searchPosts_run as $postItem) {
+        ?>
+                    <li class="carta">
+                        <?php if ($postItem['imagen'] != null) : ?>
+                            <img src="<?= base_url('uploads/posts/' . $postItem['imagen']); ?>" alt="<?= $postItem['nombre_producto']; ?>">
+                        <?php endif; ?>
+                        <h3><?= $postItem['nombre_producto']; ?></h3>
+                        <p><?= $postItem['descripcion']; ?></p>
+                        <a href="<?= base_url('productos/' . $postItem['slug']); ?>" class="btn btn-primary">Leer más</a>
+                        </li>
+        <?php
+                }
+            } else {
+                echo "<p>No se encontraron resultados para '$search_query'.</p>";
             }
-        } else {
-            echo "<p>No se encontraron resultados para '$search_query'.</p>";
         }
-    }
-    ?>
+        ?>
+        
+    </div>
+    </ul>
 </section>
 
 <br><br><br>
-</div>
-</div>
-</div>
 
 <?php
 include('includes/footer.php');

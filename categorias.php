@@ -2,13 +2,14 @@
 
     include('includes/config.php');
 
-    
+
     $page_title = "Página de Noticias";
 
     include('includes/navbar.php');
     include('includes/header.php');
 
 ?>
+
 
 <div class="py-5 bg-dark">
     <div class="container">
@@ -86,19 +87,21 @@
 
                     ?>
 
-                            <li class="carta">
+                                <li class="carta">
                                 <?php
 
                                     if($postItem['imagen'] != null):
-
                                         ?>
-                                            <img src="<?= base_url('uploads/posts/'.$postItem['imagen']);?>" alt="<?=$postItem['nombre_producto'];?>">
+                                            <img src="<?= base_url('uploads/posts/'.$postItem['imagen']);?>" alt="<?=$postItem['nombre_producto'];?>" style="width:100%">
                                 <?php endif; ?>
 
                                 <h3><?=$postItem['nombre_producto'];?></h3>
                                 <p>
-                                     <?=$postItem['descripcion'];?><br/><p>
+                                    Precio: <?= $postItem['precio_unitario']; ?><br/><p></p>
+                                    Diseñado por: <?= $postItem['autor']; ?> <br/><p></p>
+                                    <p></p>
                                      <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-primary">Leer más</a>
+                                     <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Comprar</a>
                                 </p>
                             </li>
                     <?php
@@ -110,9 +113,7 @@
     </section>
 
 
-<?php
+    <?php
 
-    include('includes/footer.php')
-
-
+include('includes/footer.php');
 ?>

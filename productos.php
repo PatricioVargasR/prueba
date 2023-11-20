@@ -61,25 +61,50 @@
                                             <?php
 
                                                 if($postItems['imagen'] != null):
-                                                    
+
                                                     ?>
                                                     <center>
                                                         <img src="<?= base_url('uploads/posts/'.$postItems['imagen']);?>" alt="<?=$postItems['nombre_producto'];?>" class="w-75">
                                                         </center>
                                                         <br>
                                                     <?php endif; ?>
-                                            
+
                                             <div>
                                                 <?= $postItems['descripcion']; ?>
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>$<?= $postItems['precio_unitario']; ?></h4>
+                                            </div>
+                                            <div class="card-body">
+                                                Entrega GRATIS el sábado, 25 de noviembre
+                                                <!--TODO: CARRITO Y PÁGINA DE COMPRAS-->
+                                                <br>
+                                                <br>
+                                                <p>Disponible</p>
+                                                <br>
+                                                <p>
+                                                <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Comprar</a>
+                                                <p></p>
+                                                <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Guardarlo</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 <?php
                             }
 
 
+
                         } else {
-                            
+
                             ?>
                                 <h4>No se encontró el post</h4>
                             <?php
@@ -92,9 +117,11 @@
                         <?php
                     }
 
+
+
                 ?>
 
-            </div>
+
 
         </div>
     </div>

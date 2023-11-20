@@ -1,3 +1,15 @@
+<?php
+
+    include('includes/config.php');
+
+    
+    $page_title = "Página de Inicio";
+
+    #include('includes/navbar.php');
+    include('includes/header.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +19,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Document</title>
+    <title>Tierras Tejidas</title>
 
 </head>
 
 <body>
+    
     <header>
         <nav>
             <div class="nav-wrapper white static">
@@ -19,10 +32,36 @@
                 <img src="assets/img/LOGO.png" alt="" style="width: 250px; height: 60px;">
               </a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li cl><a href="#" style="color:black;">Inicio</a></li>
-                <li cl><a href="categorias.php" style="color:black;">Explorar</a></li>
-                <li class="grey"><a href="register.php"><i class="material-icons left"></i>Registrate</a></li>
-                <li class="green"><a href="login.php"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
+                <li cl><a href="index.php" style="color:black;">Inicio</a></li>
+                <li cl><a href="categorias.php" style="color:black;">Categorias</a></li>
+                <li cl><a href="productos_all.php" style="color:black;">Productos</a></li>
+                <li cl><a href="buscar.php" style="color:black;">Buscar</a></li>
+                <li cl><a href="acerca.php" style="color:black;">Nosotros</a></li>
+
+                <?php if(isset($_SESSION['auth_user'])): ?>
+                    <li class="green">
+                        <span id="username-link" style="color:black; text-decoration: none; cursor: pointer;"><?= $_SESSION['auth_user']['user_name']; ?></span>
+                        <form id="logout-form" action="<?= base_url('allcode.php'); ?>" method="post" style="margin: 0; display: none;">
+                            <button type="submit" name="logout_btn" style="background: none; border: none; cursor: pointer; color: black; text-decoration: underline;">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                    <script>
+                        document.getElementById('username-link').addEventListener('click', function () {
+                            document.getElementById('logout-form').style.display = 'block';
+                        });
+                    </script>
+                <?php else : ?>
+                <li class="green"><a href="register.php"><i class="material-icons left"></i>Registrate</a></li>
+                <li class="grey">
+                    <a href="login.php">
+                        <img src="assets/img/USUARIO.png" alt="Icono de inicio de sesión" style="width: 24px; height: 24px; margin-right: 8px">
+                        Iniciar Sesión
+                    </a>
+                </li>
+
+
+                <?php endif; ?>
+
               </ul>
             </div>
           </nav>
@@ -122,24 +161,35 @@
 
     </main>
 
-    <footer>
-        <div class="row orange center">
-            <div class="col s12 " >
-                <img src="assets/img/LOGO.png" alt="" style="width: 240px; height: 120px;">
+
+    <footer class="orange" >
+    <div class="container">
+        <div class="row center">
+
+               <center><img src="assets/img/LOGO.png" alt="" style="width: 240px; height: 120px;"></center> 
+
+        </div>
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s4">
+                    <p style="font-weight: bold;"align="left">Desarrollo de Negocios</p></left>
+                </div>
+                <div class="col s4">
+                    <center><p style="font-weight: bold;">Ing. en Desarrollo de Software</p></center>
+                </div>
+                <div class="col s4">
+                    <p style="font-weight: bold;" align="right">Diseño Digital</p>
+                </div>
             </div>
-            <div class="col s12">
-                © 2023 Copyright |Service developed by
+        </div>
+        <div class="container center">
+            <div class="row">
+                <div class="col s12">
+                    © 2023 Copyright | Service developed by
+                </div>
             </div>
-            <div class="col s4">
-                <p style="font-weight: bold;">Desarrollo de Negocios</p>
-            </div>
-            <div class="col s4">
-                <p style="font-weight: bold;">Ing. en Desarrollo de Software</p>
-            </div>
-            <div class="col s4">
-                <p style="font-weight: bold;">Diseño Digital</p>
-            </div>
-          </div>
+        </div>
     </footer>
 
 </body>

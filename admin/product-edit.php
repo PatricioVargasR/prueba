@@ -14,9 +14,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4> Modificar Posts
-                        <a href="post-view.php" class="btn btn-danger float-end">Regresar</a>
+                        <a href="product-view.php" class="btn btn-danger float-end">Regresar</a>
                     </h4>
-                    
+
                 </div>
                 <div class="card-body">
 

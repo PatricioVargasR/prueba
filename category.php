@@ -41,7 +41,7 @@
         <p>
             Toma una vista de algo de nuestras memorables obras
         </p>
-        <ul class="cartas">
+        <ul class="cartas" >
             <?php
 
                 if(isset($_GET['nombre'])){
@@ -56,7 +56,7 @@
                         $categoryItem = mysqli_fetch_array($category_run);
                         $category_id = $categoryItem['id'];
 
-                        $posts = "SELECT id_categoria, nombre_producto, slug, imagen, descripcion FROM productos WHERE id_categoria='$category_id' AND stock!='0' ";
+                        $posts = "SELECT id_categoria, nombre_producto, slug, imagen, descripcion, precio_unitario, autor FROM productos WHERE id_categoria='$category_id' AND stock!='0' ";
                         $posts_run = mysqli_query($conn, $posts);
 
                         if (mysqli_num_rows($posts_run) > 0) {
@@ -65,18 +65,21 @@
 
                                 ?>
                         <!-- <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="text-decoration-none"> -->
-                            <li class="carta">
+                        <li class="carta" >
                                 <?php
 
                                     if($postItems['imagen'] != null):
-                                                    
                                         ?>
-                                            <img src="<?= base_url('uploads/posts/'.$postItems['imagen']);?>" alt="<?=$postItems['nombre_producto'];?>">
+                                            <img src="<?= base_url('uploads/posts/'.$postItems['imagen']);?>" alt="<?=$postItem['nombre_producto'];?>" style="width:100%">
                                 <?php endif; ?>
-                                            
+
                                 <h3><?=$postItems['nombre_producto'];?></h3>
                                 <p>
-                                     <?=$postItems['descripcion'];?><br/><p>
+                                    Precio: <?= $postItems['precio_unitario']; ?><br/><p></p>
+                                    Diseñado por: <?= $postItems['autor']; ?> <br/><p></p>
+                                    <p></p>
+                                     <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-primary">Leer más</a>
+                                     <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-success">Comprar</a>
                                 </p>
                             </li>
                         <!-- </a> -->

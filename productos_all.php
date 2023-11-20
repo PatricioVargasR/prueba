@@ -19,7 +19,7 @@
         </p> -->
         <ul class="cartas">
         <?php
-            $homePosts = "SELECT * FROM productos WHERE stock != '0' ORDER BY id_productos DESC";
+            $homePosts = "SELECT * FROM productos WHERE stock != 0 ORDER BY id_productos DESC";
             $homePosts_run = mysqli_query($conn, $homePosts);
 
             if(mysqli_num_rows($homePosts_run) > 0){
@@ -38,8 +38,11 @@
 
                                 <h3><?=$postItem['nombre_producto'];?></h3>
                                 <p>
-                                     <?=$postItem['descripcion'];?><br/><p>
+                                    Precio: <?= $postItem['precio_unitario']; ?><br/><p></p>
+                                    Diseñado por: <?= $postItem['autor']; ?> <br/><p></p>
+                                    <p></p>
                                      <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-primary">Leer más</a>
+                                     <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Comprar</a>
                                 </p>
                             </li>
                     <?php

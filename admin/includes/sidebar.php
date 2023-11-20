@@ -7,7 +7,7 @@
                 <div class="sb-sidenav-menu-heading">Principal</div>
                 <a class="nav-link <?= $page == 'index.php' ? 'active':''?>" href="index.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Dashboard
+                    Inicio
                 </a>
 
                 <div class="sb-sidenav-menu-heading">Funcionalidades</div>
