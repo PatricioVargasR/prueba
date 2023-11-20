@@ -79,7 +79,7 @@
                                     Diseñado por: <?= $postItems['autor']; ?> <br/><p></p>
                                     <p></p>
                                      <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-primary">Leer más</a>
-                                     <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-success">Comprar</a>
+                                     <!--<a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-success">Comprar</a>-->
                                 </p>
                             </li>
                         <!-- </a> -->

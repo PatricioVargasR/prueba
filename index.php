@@ -39,15 +39,24 @@
                 <li cl><a href="acerca.php" style="color:black;">Nosotros</a></li>
 
                 <?php if(isset($_SESSION['auth_user'])): ?>
+                    <li><a href="<?= base_url('ver_carrito.php'); ?>" style="color:black; text-decoration: none;cursor: pointer;">Carrito</a></li>
                     <li class="green">
-                        <span id="username-link" style="color:black; text-decoration: none; cursor: pointer;"><?= $_SESSION['auth_user']['user_name']; ?></span>
+                        <span id="username-link" style="color:black; text-decoration: none; cursor: pointer; padding-right: 30px; text-align:center"><?= $_SESSION['auth_user']['user_name']; ?></span>
                         <form id="logout-form" action="<?= base_url('allcode.php'); ?>" method="post" style="margin: 0; display: none;">
                             <button type="submit" name="logout_btn" style="background: none; border: none; cursor: pointer; color: black; text-decoration: underline;">Cerrar Sesión</button>
                         </form>
                     </li>
+
                     <script>
-                        document.getElementById('username-link').addEventListener('click', function () {
-                            document.getElementById('logout-form').style.display = 'block';
+                        var logoutForm = document.getElementById('logout-form');
+                        var usernameLink = document.getElementById('username-link');
+
+                        usernameLink.addEventListener('click', function () {
+                            if (logoutForm.style.display === 'block') {
+                                logoutForm.style.display = 'none';
+                            } else {
+                                logoutForm.style.display = 'block';
+                            }
                         });
                     </script>
                 <?php else : ?>

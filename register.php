@@ -59,7 +59,7 @@
                             <input type="password" name="cpassword" placeholder="Confirma tu contraseña" class="form-control" required>
                         </div>
                         <div class="form-group mb-3">
-                            <button type="submit" name="register_btn" class="btn btn-primary">Enviar</button>
+                            <button type="submit" name="register_btn" class="btn btn-success">Enviar</button>
                         </div>
                         <a href="<?= base_url('login.php'); ?>" class="btn btn-primary">Iniciar Sesión</a>
 

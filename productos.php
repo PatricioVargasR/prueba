@@ -84,16 +84,30 @@
                                             </div>
                                             <div class="card-body">
                                                 Entrega GRATIS el sábado, 25 de noviembre
-                                                <!--TODO: CARRITO Y PÁGINA DE COMPRAS-->
+
                                                 <br>
                                                 <br>
-                                                <p>Disponible</p>
+                                                <p>Estado:>Disponible</p>
                                                 <br>
                                                 <p>
-                                                <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Comprar</a>
+                                                <?php if(isset($_SESSION['auth_user'])): ?>
+                                                <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-success">Comprar</a>
                                                 <p></p>
-                                                <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Guardarlo</a>
+                                                <form action="<?= base_url('agregar_al_carrito.php'); ?>" method='post'>
+                                                    <br>
+                                                    <input type="hidden" name='id_producto' value="<?= $postItems['id_productos']; ?>">
+
+                                                    <button class="btn btn-success">
+                                                        Agregar al carrito
+                                                    </button>
+                                                </form>
                                                 </p>
+                                                <?php else : ?>
+                                                <center>
+                                                <p>Inicia sesión para poder comprar</p>
+                                                <a href="<?= base_url('login.php'); ?>" class="btn btn-success">Iniciar Sesión</a>
+                                                </center>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +119,7 @@
 
                         } else {
 
-                            ?>
+                            ?><
                                 <h4>No se encontró el post</h4>
                             <?php
 

@@ -51,7 +51,7 @@
                                 <input type="password" name="password" placeholder="Ingresa tu contraseña" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
-                                <button type="submit" name="login_btn" class="btn btn-primary">Iniciar Sesión</button>
+                                <button type="submit" name="login_btn" class="btn btn-success">Iniciar Sesión</button>
                             </div>
                             <a href="<?= base_url('register.php'); ?>" class="btn btn-primary">Registrate</a>
                         </form>

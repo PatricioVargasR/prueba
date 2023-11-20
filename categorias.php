@@ -100,8 +100,8 @@
                                     Precio: <?= $postItem['precio_unitario']; ?><br/><p></p>
                                     Diseñado por: <?= $postItem['autor']; ?> <br/><p></p>
                                     <p></p>
-                                     <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-primary">Leer más</a>
-                                     <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Comprar</a>
+                                     <a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-primary">Ver más</a>
+                                     <!--<a href="<?= base_url('productos/'.$postItem['slug']); ?>" class="btn btn-success">Comprar</a>-->
                                 </p>
                             </li>
                     <?php
