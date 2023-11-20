@@ -61,7 +61,7 @@
                         });
                     </script>
                 <?php else : ?>
-                <li class="green"><a href="register.php"><i class="material-icons left"></i>Registrate</a></li>
+                <li class="green"><a href="register.php" style="text-decoration: none;cursor: pointer;">Registrate</a></li>
                 <li class="grey">
                     <a href="login.php">
                         <img src="assets/img/USUARIO.png" alt="Icono de inicio de sesión" style="width: 24px; height: 24px; margin-right: 8px">

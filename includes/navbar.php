@@ -2,7 +2,7 @@
     <nav>
         
         <div class="nav-wrapper white static">
-            <a href="#" class="brand-logo">
+            <a href="<?php base_url('index.php'); ?>" class="brand-logo">
                 <img src="<?= base_url('assets/img/LOGO.png'); ?>" alt="" style="width: 250px; height: 60px;">
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
