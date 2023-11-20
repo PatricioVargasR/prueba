@@ -6,21 +6,22 @@
 
     $page_title = "Página de Productos";
 
+    include('includes/header.php');
     include('includes/navbar.php');
 
-    include('includes/header.php');
+
     $productos = obtenerProductosEnCarrito();
 ?>
 
 
-<section class="portafolio">
+
+<section class="informacion">
+<center>
         <h3>Productos</h3>
         <div class="underline"></div>
         <!-- <p>
             Toma una vista de algo de nuestras memorables obras
         </p> -->
-        <div class="columns">
-        <div class="column">
             <table class="table">
                 <thead>
                     <tr>
@@ -66,9 +67,10 @@
     <br>
     <br>
     <br>
+    </center>
+    </section>
 
 <?php
 
     include('includes/footer.php');
 ?>
-                    </section>

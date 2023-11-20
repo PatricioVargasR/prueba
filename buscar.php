@@ -1,13 +1,15 @@
 <?php
 include('includes/config.php');
 $page_title = "Página de Buscar";
-include('includes/navbar.php');
 include('includes/header.php');
+include('includes/navbar.php');
+
 ?>
 
 <style>
     .paginainicio {
         /**background-image: url("assets/img/65054.jpg"); **/
+
     }
 
 
@@ -35,6 +37,9 @@ include('includes/header.php');
 <section class="paginainicio" id="inicio">
     <div class="contenido">
         <div class="texto">
+            <br>
+            <br>
+            <br>
             <center>
                 <h1>Tierra Tejida</h1>
                 <p>
@@ -51,6 +56,10 @@ include('includes/header.php');
             </center>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+
 </section>
 
 <section class="portafolio">

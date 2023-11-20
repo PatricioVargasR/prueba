@@ -8,6 +8,8 @@
         <meta name="author" content="" />
 
         <title>Administra tu negocio</title>
+
+        <link rel="shortcut icon" href="../assets/img/LOGO_V.jpg">
         
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />

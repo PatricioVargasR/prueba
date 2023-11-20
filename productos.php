@@ -87,7 +87,7 @@
 
                                                 <br>
                                                 <br>
-                                                <p>Estado:>Disponible</p>
+                                                <p>Estado: Disponible</p>
                                                 <br>
                                                 <p>
                                                 <?php if(isset($_SESSION['auth_user'])): ?>

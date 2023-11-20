@@ -9,6 +9,7 @@
     <title><?php if(isset($page_title)) { echo "$page_title"; } else { echo " "; } ?></title>
     <meta name="author" content="Todo el equipo" />
 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap5.min.css'); ?> ">
+    <link rel="shortcut icon" href="<?= base_url('assets/img/LOGO_V.jpg'); ?>">
 </head>
 <body>
     
