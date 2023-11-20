@@ -2,6 +2,16 @@
 include('admin/config/dbconn.php');
 include('includes/config.php');
 
+
+function quitarCarrito()
+{
+    $bd = obtenerConexion();
+    $idSesion = session_id();
+    $sentencia = $bd->prepare("DELETE FROM carrito WHERE id_sesion = ?");
+    return $sentencia->execute([$idSesion]);
+}
+
+
 function agregarProductoAlCarrito($idProducto)
 {
     // Ligar el id del producto con el usuario a través de la sesión

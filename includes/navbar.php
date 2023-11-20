@@ -12,7 +12,7 @@
                 <li><a href="<?= base_url('buscar.php'); ?>" style="color:black; text-decoration: none;cursor: pointer;">Buscar</a></li>
                 <li><a href="<?= base_url('acerca.php'); ?>" style="color:black; text-decoration: none;cursor: pointer;">Nosotros</a></li>
                 <?php if(isset($_SESSION['auth_user'])): ?>
-                    <li><a href="<?= base_url('ver_carrito.php'); ?>" style="color:black; text-decoration: none;cursor: pointer;"><img src="assets/img/CARRITO.png" alt="Icono de carrito" style="width: 45px; height: 56px; margin-top: 0px"></a></li>
+                    <li><a href="<?= base_url('ver_carrito.php'); ?>" style="color:black; text-decoration: none;cursor: pointer;"><img src="<?= base_url('assets/img/CARRITO.png'); ?>" alt="Icono de carrito" style="width: 45px; height: 56px; margin-top: 0px"></a></li>
                     <li class="green">
                     <span id="username-link" style="color: black; text-decoration: none; cursor: pointer; padding-right: 40px; display: block; text-align: center;">
                         <?= $_SESSION['auth_user']['user_name']; ?>

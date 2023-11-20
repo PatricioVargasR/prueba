@@ -1,4 +1,3 @@
-?>
 <?php
 include_once "funciones.php";
 if (!isset($_POST["id_producto"])) {

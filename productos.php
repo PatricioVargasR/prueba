@@ -91,7 +91,7 @@
                                                 <br>
                                                 <p>
                                                 <?php if(isset($_SESSION['auth_user'])): ?>
-                                                <a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-success">Comprar</a>
+                                                <!--<a href="<?= base_url('productos/'.$postItems['slug']); ?>" class="btn btn-success">Comprar</a>-->
                                                 <p></p>
                                                 <form action="<?= base_url('agregar_al_carrito.php'); ?>" method='post'>
                                                     <br>

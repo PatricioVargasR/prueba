@@ -60,7 +60,11 @@
                     </tr>
                 </tfoot>
             </table>
-            <a href="terminar_compra.php" class="button is-success is-large"><i class="fa fa-check"></i>&nbsp;Terminar compra</a>
+            <form action="<?= base_url('eliminar_carrito.php'); ?>" method="post">
+                <button type="submit" name="submit_button" class="btn btn-success">
+                    <i class="fa fa-check"></i>&nbsp;Terminar compra
+                </button>
+            </form>
         </div>
     </div>
     <br>
