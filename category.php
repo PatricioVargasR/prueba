@@ -37,15 +37,15 @@
 
 
 <section class="portafolio">
-        <h2>Últimas noticias relacionadas</h2>
+        <h2>Últimos productos relacionadas</h2>
         <p>
-            Toma una vista de algo de nuestras memorables obras
+            Toma una vista de algo de nuestros memorables diseños
         </p>
         <ul class="cartas" >
             <?php
 
                 if(isset($_GET['nombre'])){
-                    
+
                     $slug = mysqli_real_escape_string($conn, $_GET['nombre']);
 
                     $category = "SELECT id,slug FROM categorias WHERE slug='$slug' AND status = '0' LIMIT 1";

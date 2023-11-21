@@ -84,7 +84,8 @@ include('includes/navbar.php');
                             <img src="<?= base_url('uploads/posts/' . $postItem['imagen']); ?>" alt="<?= $postItem['nombre_producto']; ?>">
                         <?php endif; ?>
                         <h3><?= $postItem['nombre_producto']; ?></h3>
-                        <p><?= $postItem['descripcion']; ?></p>
+                        <p>Precio <?= $postItem['precio_unitario']; ?></p>
+                        <p>Diseñado por: <?= $postItem['autor']; ?></p>
                         <a href="<?= base_url('productos/' . $postItem['slug']); ?>" class="btn btn-primary">Leer más</a>
                         </li>
         <?php

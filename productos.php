@@ -54,7 +54,7 @@
                                 ?>
                                     <div class="card shadow-sm mb-4">
                                         <div class="card-header">
-                                            <h5><?= $postItems['nombre_producto']; ?></h5>
+                                            <h2><?= $postItems['nombre_producto']; ?></h2>
                                         </div>
                                         <div class="card-body">
                                             <hr/>
@@ -70,7 +70,7 @@
                                                     <?php endif; ?>
 
                                             <div>
-                                                <?= $postItems['descripcion']; ?>
+                                               <?= $postItems['descripcion']; ?>
                                             </div>
                                         </div>
                                     </div>

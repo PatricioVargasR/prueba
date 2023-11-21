@@ -15,7 +15,7 @@
                     <li><a href="<?= base_url('ver_carrito.php'); ?>" style="color:black; text-decoration: none;cursor: pointer;"><img src="<?= base_url('assets/img/CARRITO.png'); ?>" alt="Icono de carrito" style="width: 45px; height: 56px; margin-top: 0px"></a></li>
                     <li class="green">
                     <span id="username-link" style="color: black; text-decoration: none; cursor: pointer; padding-right: 40px; display: block; text-align: center;">
-                        <?= $_SESSION['auth_user']['user_name']; ?>
+                    &nbsp; Eres: <?= $_SESSION['auth_user']['user_name']; ?>
                     </span>
                     <form id="logout-form" action="<?= base_url('allcode.php'); ?>" method="post" style="margin: 0; display: none; text-align: center;">
                         <button type="submit" name="logout_btn" style="background: none; border: none; cursor: pointer; color: black; text-decoration: underline;">Cerrar Sesión</button>
